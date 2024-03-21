@@ -44,13 +44,27 @@ class CycleIter:
         self.index += 1
         return value
 
+    def peek(self) -> Any:
+        """
+        Peek at the next element in the sequence without advancing the iterator.
+
+        Returns:
+            Any: The next element in the sequence.
+        """
+        if self.index == len(self.iter_obj):
+            self.index = 0
+        value: Any = self.iter_obj[self.index]
+        return value
+
 
 def main():
     """
     Main function to demonstrate the usage of CycleIter.
     """
-    for item in CycleIter([1, 2, 3]):
-        print(item)
+    test_iter = CycleIter([1, 2, 3, 5, 7])
+    print(next(test_iter))
+    print(test_iter.peek())
+    print(next(test_iter))
 
 
 if __name__ == "__main__":
